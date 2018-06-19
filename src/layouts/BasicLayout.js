@@ -15,7 +15,8 @@ import NotFound from '../routes/Exception/404';
 import { getRoutes } from '../utils/utils';
 import Authorized from '../utils/Authorized';
 import { getMenuData } from '../common/menu';
-import logo from '../assets/logo.svg';
+import logo from '../assets/ayalaLogoWhite.png';
+import miniLogo from '../assets/ayalaLogoMini.png';
 
 const { Content, Header, Footer } = Layout;
 const { AuthorizedRoute, check } = Authorized;
@@ -193,7 +194,7 @@ class BasicLayout extends React.PureComponent {
     const layout = (
       <Layout>
         <SiderMenu
-          logo={logo}
+          logo={collapsed ? miniLogo : logo}
           // 不带Authorized参数的情况下如果没有权限,会强制跳到403界面
           // If you do not have the Authorized parameter
           // you will be forced to jump to the 403 interface without permission
@@ -207,7 +208,7 @@ class BasicLayout extends React.PureComponent {
         <Layout>
           <Header style={{ padding: 0 }}>
             <GlobalHeader
-              logo={logo}
+              logo={miniLogo}
               currentUser={currentUser}
               fetchingNotices={fetchingNotices}
               notices={notices}

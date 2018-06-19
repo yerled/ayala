@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { Menu, Icon, Spin, Tag, Dropdown, Avatar, Divider, Tooltip } from 'antd';
+import { Menu, Icon, Spin, Tag, Dropdown, Avatar, Divider, Tooltip, Select } from 'antd';
 import moment from 'moment';
 import groupBy from 'lodash/groupBy';
 import Debounce from 'lodash-decorators/debounce';
@@ -7,6 +7,8 @@ import { Link } from 'dva/router';
 import NoticeIcon from '../NoticeIcon';
 import HeaderSearch from '../HeaderSearch';
 import styles from './index.less';
+
+const { Option } = Select
 
 export default class GlobalHeader extends PureComponent {
   componentWillUnmount() {
@@ -97,6 +99,15 @@ export default class GlobalHeader extends PureComponent {
           type={collapsed ? 'menu-unfold' : 'menu-fold'}
           onClick={this.toggle}
         />
+        <div className={styles.cluster}>
+          当前集群：
+          <Select defaultValue="lucy" style={{ width: 120 }}>
+            <Option value="jack">Jack</Option>
+            <Option value="lucy">Lucy</Option>
+            <Option value="disabled" disabled>Disabled</Option>
+            <Option value="Yiminghe">yiminghe</Option>
+          </Select>
+        </div>
         <div className={styles.right}>
           <HeaderSearch
             className={`${styles.action} ${styles.search}`}

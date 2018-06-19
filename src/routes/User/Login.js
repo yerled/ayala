@@ -5,7 +5,7 @@ import { Checkbox, Alert, Icon } from 'antd';
 import Login from 'components/Login';
 import styles from './Login.less';
 
-const { Tab, UserName, Password, Mobile, Captcha, Submit } = Login;
+const { UserName, Password, Submit } = Login;
 
 @connect(({ login, loading }) => ({
   login,
@@ -50,22 +50,22 @@ export default class LoginPage extends Component {
     return (
       <div className={styles.main}>
         <Login defaultActiveKey={type} onTabChange={this.onTabChange} onSubmit={this.handleSubmit}>
-          <Tab key="account" tab="账户密码登录">
-            {login.status === 'error' &&
-              login.type === 'account' &&
-              !submitting &&
-              this.renderMessage('账户或密码错误（admin/888888）')}
-            <UserName name="userName" placeholder="admin/user" />
-            <Password name="password" placeholder="888888/123456" />
-          </Tab>
-          <Tab key="mobile" tab="手机号登录">
+          {/* <Tab key="account" tab="账户密码登录"> */}
+          {login.status === 'error' &&
+            login.type === 'account' &&
+            !submitting &&
+            this.renderMessage('账户或密码错误（admin/888888）')}
+          <UserName name="userName" placeholder="用户名" />
+          <Password name="password" placeholder="密码" />
+          {/* </Tab> */}
+          {/* <Tab key="mobile" tab="手机号登录">
             {login.status === 'error' &&
               login.type === 'mobile' &&
               !submitting &&
               this.renderMessage('验证码错误')}
             <Mobile name="mobile" />
             <Captcha name="captcha" />
-          </Tab>
+          </Tab> */}
           <div>
             <Checkbox checked={this.state.autoLogin} onChange={this.changeAutoLogin}>
               自动登录
